@@ -29,7 +29,7 @@ public class Main {
         }
 
         // Recursive Case
-        for(int cand = 0; cand < n; cand++) {
+        for(int cand = 0; cand < k; cand++) {
             order[depth] = numbers[cand];
             permutation(depth + 1);
         }
