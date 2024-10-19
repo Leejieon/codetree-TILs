@@ -19,43 +19,35 @@ public class Main {
 
         int result = 0;
         for(int y = 0; y < n; y++) {
-            int prev = arr[y][0];
             int count = 1;
-            boolean check = false;
+            int maxCount = 1;
             for(int x = 1; x < n; x++) {
-                if(prev == arr[y][x]) {
+                if(arr[y][x - 1] == arr[y][x]) {
                     count++;
-                    if(count >= m) {
-                        check = true;
-                    }
                 } else {
                     count = 1;
                 }
-                prev = arr[y][x];
+                maxCount = Math.max(maxCount, count);
             }
 
-            if(check || m == 1) {
+            if(maxCount >= m) {
                 result++;
             }
         }
         
         for(int x = 0; x < n; x++) {
-            int prev = arr[0][x];
             int count = 1;
-            boolean check = false;
+            int maxCount = 1;
             for(int y = 1; y < n; y++) {
-                if(prev == arr[y][x]) {
+                if(arr[y - 1][x] == arr[y][x]) {
                     count++;
-                    if(count >= m) {
-                        check = true;
-                    }
                 } else {
                     count = 1;
                 }
-                prev = arr[y][x];
+                maxCount = Math.max(maxCount, count);
             }
 
-            if(check || m == 1) {
+            if(maxCount >= m) {
                 result++;
             }
         }
