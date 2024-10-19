@@ -34,7 +34,7 @@ public class Main {
                 prev = arr[y][x];
             }
 
-            if(check) {
+            if(check || m == 1) {
                 result++;
             }
         }
@@ -55,7 +55,7 @@ public class Main {
                 prev = arr[y][x];
             }
 
-            if(check) {
+            if(check || m == 1) {
                 result++;
             }
         }
