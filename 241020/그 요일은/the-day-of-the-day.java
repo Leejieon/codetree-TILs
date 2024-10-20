@@ -30,7 +30,7 @@ public class Main {
         }};
 
         int day = map.get(br.readLine());
-        System.out.println((diff/7) + (diff%7 <= day ? 1 : 0));
+        System.out.println((diff/7) + (diff%7 >= day ? 1 : 0));
     }
 
     static int getDay(int m, int d) {
