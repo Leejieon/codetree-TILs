@@ -5,7 +5,7 @@ public class Main {
 
     static int[] days = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     static String[] daysStr = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-    static String[] daysStrReverse = {"Mon", "Sun", "Sat", "Fri", "Thu", "Web", "Tue"};
+    static String[] daysStrReverse = {"Mon", "Sun", "Sat", "Fri", "Thu", "Wed", "Tue"};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
