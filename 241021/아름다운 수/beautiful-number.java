@@ -43,7 +43,9 @@ public class Main {
                     result = true;
                 } else {
                     result = false;
+                    break;
                 }
+                count = 1;
             }
             prev = order[i];
         }
@@ -53,7 +55,7 @@ public class Main {
         } else {
             result = false;
         }
-        
+
         return result;
     }
 }
