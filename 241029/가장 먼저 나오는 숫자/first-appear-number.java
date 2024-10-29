@@ -25,11 +25,12 @@ public class Main {
             while(left <= right) {
                 int mid = (left + right) / 2;
 
+                if(numbers[mid] == target) {
+                    idx = Math.min(idx, mid + 1);
+                }
+
                 if(numbers[mid] >= target) {
                     right = mid - 1;
-                    if(numbers[mid] == target) {
-                        idx = Math.min(idx, mid + 1);
-                    } 
                 } else {
                     left = mid + 1;
                 }
