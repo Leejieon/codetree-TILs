@@ -26,7 +26,7 @@ public class Main {
                 int mid = (left + right) / 2;
 
                 if(numbers[mid] == target) {
-                    idx = Math.min(idx, mid + 1);
+                    idx = Math.min(idx, mid);
                 }
 
                 if(numbers[mid] >= target) {
@@ -35,10 +35,8 @@ public class Main {
                     left = mid + 1;
                 }
             }
-            if(idx == n) {
-                idx = -1;
-            }
-            System.out.println(idx);
+            
+            System.out.println(idx == n ? -1 : idx + 1);
         }
     }
 }
