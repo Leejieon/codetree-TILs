@@ -22,7 +22,7 @@ public class Main {
 
         int left = 1;
         int right = max;
-        int idx = -1;
+        int idx = 0;
         while(left <= right) {
             int mid = (left + right) / 2;
 
