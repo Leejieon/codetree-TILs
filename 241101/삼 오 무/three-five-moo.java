@@ -6,11 +6,11 @@ public class Main {
 
         int n = sc.nextInt();
 
-        int left = 0;
-        int right = 1_000_000_000;
-        int rst = -1;
+        long left = 0;
+        long right = 1_000_000_000;
+        long rst = 0;
         while(left <= right) {
-            int mid = (left + right) / 2;
+            long mid = (left + right) / 2;
 
             if(count(mid) == n) {
                 rst = mid;
@@ -27,7 +27,7 @@ public class Main {
         System.out.println(rst);
     }
 
-    static int count(int number) {
+    static long count(long number) {
         return number - (number/3 + number/5 - number/15);
     }
 }
