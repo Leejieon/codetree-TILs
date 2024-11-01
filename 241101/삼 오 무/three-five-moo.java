@@ -6,9 +6,9 @@ public class Main {
 
         int n = sc.nextInt();
 
-        int left = 1;
+        int left = 0;
         int right = 1_000_000_000;
-        int rst = 0;
+        int rst = -1;
         while(left <= right) {
             int mid = (left + right) / 2;
 
@@ -18,7 +18,7 @@ public class Main {
             }
 
             if(count(mid) > n) {
-                right = mid  -1;
+                right = mid - 1;
             } else {
                 left = mid + 1;
             }
