@@ -6,19 +6,15 @@ public class Main {
 
         int n = sc.nextInt();
 
-        long left = 0;
-        long right = 1_000_000_000;
-        long rst = 0;
+        long left = 1;
+        long right = 2_000_000_000;
+        long rst = 2_000_000_000;
         while(left <= right) {
             long mid = (left + right) / 2;
 
-            if(count(mid) == n) {
-                rst = mid;
-                break;
-            }
-
-            if(count(mid) > n) {
+            if(count(mid) >= n) {
                 right = mid - 1;
+                rst = Math.min(rst, mid);
             } else {
                 left = mid + 1;
             }
