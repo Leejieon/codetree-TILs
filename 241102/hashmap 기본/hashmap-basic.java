@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -12,14 +11,16 @@ public class Main {
         for(int i = 0; i < n; i++) {
             String command = sc.next();
             
+            int key = 0;
+            int value = 0;
             switch(command) {
                 case "add":
-                    int key = sc.nextInt();
-                    int value = sc.nextInt();
+                    key = sc.nextInt();
+                    value = sc.nextInt();
                     map.put(key, value);
                     break;
                 case "find":
-                    int key = sc.nextInt();
+                    key = sc.nextInt();
                     if(map.containsKey(key)) {
                         System.out.println(map.get(key));
                     } else {
@@ -27,7 +28,7 @@ public class Main {
                     }
                     break;
                 default:
-                    int key = sc.nextInt();
+                    key = sc.nextInt();
                     map.remove(key);
                     break;
             }
