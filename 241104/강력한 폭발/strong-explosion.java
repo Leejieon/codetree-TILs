@@ -56,28 +56,25 @@ public class Main {
 
     static int getBombCount() {
         int rst = 0;
-        int[][] newGraph = new int[N][N];
-        for(int i = 0; i < N; i++) {
-            newGraph[i] = graph[i].clone();
-        }
+        boolean[][] newGraph = new boolean[N][N];
 
         for(int i = 0; i < order.length; i++) {
             int[] point = bomblist.get(i);
+            newGraph[point[0]][point[1]] = true;
 
             for(int j = 0; j < 4; j++) {
                 int ny = point[0] + bombs[order[i]][j][0];
                 int nx = point[1] + bombs[order[i]][j][1];
 
                 if(isOutOfBound(ny, nx)) continue;
-                if(newGraph[ny][nx] == 1) continue;
 
-                newGraph[ny][nx] = 2;
+                newGraph[ny][nx] = true;
             }
         }
 
-        for(int[] rows : newGraph) {
-            for(int point : rows) {
-                if(point == 2 || point == 1) {
+        for(boolean[] rows : newGraph) {
+            for(boolean point : rows) {
+                if(point) {
                     rst++;
                 }
             }
