@@ -12,14 +12,13 @@ public class Main {
         Arrays.fill(dp, -1);
         dp[0] = 0;
         dp[1] = 1;
-        dp[2] = 1;
 
         System.out.println(fibbo(n));
     }
 
     static int fibbo(int number) {
         // Base Case
-        if(number <= 2) {
+        if(number <= 1) {
             return dp[number];
         }
 
