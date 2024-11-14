@@ -23,6 +23,10 @@ public class Main {
                     dp[y][x] = dp[y][x + 1] + graph[y][x];
                     continue;
                 }
+                if(x == n - 1) {
+                    dp[y][x] = dp[y - 1][x] + graph[y][x];
+                    continue;
+                }
                 dp[y][x] = Math.min(dp[y][x + 1], dp[y - 1][x]) + graph[y][x];
             }
         }
