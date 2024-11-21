@@ -58,7 +58,8 @@ public class Main {
         }
 
         rst += subRst;
-        return dp[y][x] = rst;
+        dp[y][x] = rst;
+        return dp[y][x];
     }
 
     static boolean isOutOfBound(int y, int x) {
