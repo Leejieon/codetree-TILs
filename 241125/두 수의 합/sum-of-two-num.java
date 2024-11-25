@@ -10,19 +10,20 @@ public class Main {
         int K = Integer.parseInt(st.nextToken());
 
         HashMap<Integer, Integer> map = new HashMap<>();
-        ArrayList<Integer> list = new ArrayList<>();
 
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < N; i++) {
             int number = Integer.parseInt(st.nextToken());
-            list.add(number);
-            
-            for(int j = 0; j < i; j++) {
-                map.put(list.get(j) + number, 
-                map.getOrDefault(list.get(j) + number, 0) + 1);
+            map.put(number, map.getOrDefault(number, 0) + 1);
+        }
+
+        int ans = 0;
+        for(int key : map.keySet()) {
+            if(map.containsKey(K - key)) {
+                ans += map.get(K - key);
             }
         }
 
-        System.out.println(map.get(K));
+        System.out.println(ans / 2);
     }
 }
