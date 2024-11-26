@@ -10,19 +10,16 @@ public class Main {
         int K = Integer.parseInt(st.nextToken());
 
         HashMap<Integer, Integer> map = new HashMap<>();
-        HashMap<Integer, Integer> sumMap = new HashMap<>();
-
+        
+        int ans = 0;
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < N; i++) {
             int number = Integer.parseInt(st.nextToken());
 
-            for(int key : map.keySet()) {
-                int sum = key + number;
-                sumMap.put(sum, sumMap.getOrDefault(sum, 0) + 1);
-            }
+            ans += map.getOrDefault(K - number, 0);
             map.put(number, map.getOrDefault(number, 0) + 1);
         }
 
-        System.out.println(sumMap.getOrDefault(K, 0));
+        System.out.println(ans);
     }
 }
