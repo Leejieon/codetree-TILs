@@ -14,7 +14,7 @@ public class Main {
             numbers[i] = Integer.parseInt(st.nextToken());
         }
 
-        int ans = 0;
+        int ans = 1;
         int[] dp = new int[N];
         Arrays.fill(dp, -1);
 
