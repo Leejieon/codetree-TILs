@@ -16,7 +16,7 @@ public class Main {
 
         int ans = 1;
         int[] dp = new int[N];
-        Arrays.fill(dp, -1);
+        Arrays.fill(dp, 1);
 
         dp[0] = 1;
         for(int i = 1; i < N; i++) {
