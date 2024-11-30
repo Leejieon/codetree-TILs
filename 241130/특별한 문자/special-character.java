@@ -14,9 +14,10 @@ public class Main {
         }
 
         Character ans = null;
-        for(Character key : map.keySet()) {
-            if(map.get(key) == 1) {
-                ans = key;
+        for(int i = 0; i < str.length(); i++) {
+            Character c = str.charAt(i);
+            if(map.get(c) == 1) {
+                ans = c;
                 break;
             }
         }
