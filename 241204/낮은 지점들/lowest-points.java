@@ -23,7 +23,7 @@ public class Main {
             }
         }
         
-        int ans = 0;
+        long ans = 0;
         for(int key : map.keySet()) {
             ans += map.get(key);
         }
