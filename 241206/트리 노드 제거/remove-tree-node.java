@@ -5,14 +5,14 @@ public class Main {
 
     static int N, root, ans;
     static ArrayList<Integer>[] children;
-    static boolean[] visited;
+    static boolean[] isDeleted;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
         N = Integer.parseInt(br.readLine());
-        visited = new boolean[N];
+        isDeleted = new boolean[N];
         children = new ArrayList[N];
         for(int i = 0; i < N; i++) {
             children[i] = new ArrayList<>();
@@ -28,35 +28,27 @@ public class Main {
             children[parent].add(i);
         }
 
-        Integer deleteNode = Integer.parseInt(br.readLine());
-        children[deleteNode].clear();
-        for(int i = 0; i < N; i++) {
-            if(children[i].contains(deleteNode)) {
-                children[i].remove(deleteNode);
-                break;
-            }
-        }
+        int deleteNode = Integer.parseInt(br.readLine());
+        isDeleted[deleteNode] = true;
         
         ans = 0;
-        visited[root] = true;
         dfs(root);
         System.out.println(ans);
     }
 
     static void dfs(int x) {
-        if(children[x].isEmpty()) return;
-        
-        int count = 0;
+        if(isDeleted[x]) return;
+
+        boolean isLeaf = true;
+
         for(int y : children[x]) {
-            if(!visited[y]) {
-                count++;
-                visited[y] = true;
-                dfs(y);
-            }
+            if(isDeleted[y]) continue;
+
+            dfs(y);
+            isLeaf = false;
         }
 
-        if(count == 0) {
+        if(isLeaf)
             ans++;
-        }
     }
 }
