@@ -50,7 +50,9 @@ public class Main {
                 break;
             }
         }
-        isTree = rootCount == 1 ? true : false;
+        if(rootCount != 1) {
+            isTree = false;
+        }
 
         if(!isTree) {
             System.out.println(0);
