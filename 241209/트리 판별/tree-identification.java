@@ -29,13 +29,13 @@ public class Main {
 
             nodes.add(from);
             nodes.add(to);
+
             inDeg[to]++;
             edges[from].add(to);
             edges[to].add(from);
         }
         
         // 1. 루트는 한 개
-        // 2. 루트를 제외한 모든 노드는 반드시 단 하나의 들어오는 간선
         boolean isTree = true;
         int rootCount = 0;
         int root = -1;
@@ -44,10 +44,6 @@ public class Main {
             if(inDeg[i] == 0) {
                 rootCount++;
                 root = i;
-            }
-            if(inDeg[i] != 1) {
-                isTree = false;
-                break;
             }
         }
         if(rootCount != 1) {
@@ -59,7 +55,22 @@ public class Main {
             return;
         }
 
+        // 2. 루트를 제외한 모든 노드는 반드시 단 하나의 들어오는 간선
+        for(int i : nodes) {
+            if(i != root && inDeg[i] != 1) {
+                isTree = false;
+                break;
+            }
+        }
+
+        if(!isTree) {
+            System.out.println(0);
+            return;
+        }
+
+        visited[root] = true;
         travelsal(root);
+
         for(int i : nodes) {
             if(!visited[i]) {
                 isTree = false;
