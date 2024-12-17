@@ -17,23 +17,17 @@ public class Main {
             groups[i] = new HashSet<>();
         }
 
-        HashSet<Integer>[] persons = new HashSet[N + 1];
-        for(int i = 1; i <= N; i++) {
-            persons[i] = new HashSet<>();
-        }
-
         for(int i = 0; i < G; i++) {
             st = new StringTokenizer(br.readLine());
             int count = Integer.parseInt(st.nextToken());
             for(int c = 0; c < count; c++) {
                 int p = Integer.parseInt(st.nextToken());
                 groups[i].add(p);
-                persons[p].add(i);
             }
         }
 
         int ans = 0;
-        ArrayList<Integer> list = new ArrayList<>();
+        HashSet<Integer> list = new HashSet<>();
         list.add(1);
         while(true) {
             ans += list.size();
