@@ -10,13 +10,10 @@ public class Main {
         int K = Integer.parseInt(st.nextToken());
 
         HashSet<Integer>[] sets = new HashSet[N + 1];
+        int[] seats = new int[N + 1];
         for(int i = 1; i <= N; i++) {
             sets[i] = new HashSet<>();
             sets[i].add(i);
-        }
-
-        int[] seats = new int[N + 1];
-        for(int i = 1; i <= N; i++) {
             seats[i] = i;
         }
 
