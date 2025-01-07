@@ -86,31 +86,6 @@ public class Main {
             }
             sb.append("\n");
         }
-        for(int i = 1; i <= N; i++) {
-            sb.append(nodes[i]).append(" ");
-            sb.append(child[i].size()).append(" ");
-            for(int j = 0; j < child[i].size(); j++) {
-                sb.append(nodes[child[i].get(j)]).append(" ");
-            }
-            sb.append("\n");
-        }
-
-        System.out.print(sb);
-
-
-테스트케이스
-
-
-결과
-
-
-코드 실행
-
-
-제출 및 채점
-
-
-
 
         System.out.print(sb);
     }
