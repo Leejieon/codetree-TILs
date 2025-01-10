@@ -18,9 +18,9 @@ public class Main {
         }
 
         int[][] dp = new int[N][M];
-        // for(int[] d : dp) {
-        //     Arrays.fill(d, -1);
-        // }
+        for(int[] d : dp) {
+            Arrays.fill(d, -1);
+        }
 
         dp[0][0] = 1;
         for(int y = 1; y < N; y++) {
@@ -41,7 +41,6 @@ public class Main {
                 rst = Math.max(rst, dp[y][x]);
             }
         }
-
         System.out.println(rst);
     }
 }
