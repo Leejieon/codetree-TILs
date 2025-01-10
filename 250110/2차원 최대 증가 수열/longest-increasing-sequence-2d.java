@@ -23,9 +23,8 @@ public class Main {
         // }
 
         dp[0][0] = 1;
-        for(int y = 0; y < N; y++) {
-            for(int x = 0; x < M; x++) {
-
+        for(int y = 1; y < N; y++) {
+            for(int x = 1; x < M; x++) {
                 for(int i = 0; i < y; i++) {
                     for(int j = 0; j < x; j++) {
                         if(graph[i][j] < graph[y][x]) {
