@@ -21,7 +21,7 @@ public class Main {
             if(o1.end == o2.end) {
                 return o2.salary - o1.salary;
             }
-            return o2.end - o1.end;
+            return o1.end - o2.end;
         });
 
         int[] dp = new int[N];
