@@ -18,6 +18,8 @@ public class Main {
         dp[0][0] = 1; // 증가하고 있는 경우
         dp[0][1] = 1; // 감소하고 있는 경우
         for(int i = 1; i < N; i++) {
+            dp[i][0] = 1;
+            dp[i][1] = 1;
             // 증가하고 있는 경우
             for(int j = 0; j < i; j++) {
                 if(numbers[j] < numbers[i]) {
