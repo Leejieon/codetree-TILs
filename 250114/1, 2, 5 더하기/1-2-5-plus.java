@@ -9,13 +9,10 @@ public class Main {
         int[] numbers = new int[]{1, 2, 5};
 
         int[] dp = new int[N + 1];
-        dp[0] = 0;
-        dp[1] = 1;
-        dp[2] = 1;
-        dp[5] = 1;
+        dp[0] = 1;
         for(int i = 1; i <= N; i++) {
             for(int j = 0; j < 3; j++) {
-                if(i > numbers[j]) {
+                if(i >= numbers[j]) {
                     dp[i] = (dp[i] % 10007 + dp[i - numbers[j]] % 10007) % 10007;
                 }
             }
