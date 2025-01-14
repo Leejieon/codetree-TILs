@@ -16,7 +16,7 @@ public class Main {
         }
 
         int[] dp = new int[M + 1];
-        Arrays.fill(dp, Integer.MAX_VALUE);
+        Arrays.fill(dp, (int)1e9);
         dp[0] = 0;
 
         for(int i = 1; i <= M; i++) {
@@ -29,7 +29,7 @@ public class Main {
             }
         }
         
-        if(dp[M] == Integer.MAX_VALUE) {
+        if(dp[M] == (int)1e9) {
             System.out.println(-1);
         } else {
             System.out.println(dp[M]);
