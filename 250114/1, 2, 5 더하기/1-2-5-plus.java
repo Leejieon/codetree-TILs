@@ -16,7 +16,7 @@ public class Main {
         for(int i = 1; i <= N; i++) {
             for(int j = 0; j < 3; j++) {
                 if(i > numbers[j]) {
-                    dp[i] += dp[i - numbers[j]] % 10007;
+                    dp[i] = (dp[i] % 10007 + dp[i - numbers[j]] % 10007) % 10007;
                 }
             }
         }
