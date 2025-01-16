@@ -19,16 +19,11 @@ public class Main {
         }
 
         int[] dp = new int[M + 1];
-        Arrays.fill(dp, -1);
         dp[0] = 0;
+
         for(int i = 1; i <= N; i++) {
-            for(int w = 1; w <= M; w++) {
-                if(w >= weights[i]) {
-                    if(dp[w - weights[i]] == -1) continue;
-                    dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);
-                } else {
-                    dp[w] = dp[w - 1];
-                }
+            for(int w = weights[i]; w <= M; w++) {
+                dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);
             }
         }
 
