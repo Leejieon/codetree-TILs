@@ -29,7 +29,7 @@ public class Main {
         }
 
         bfs(0, 0);
-        System.out.println(dist[N - 1][M - 1]);
+        System.out.println(dist[N - 1][M - 1] != 0 ? dist[N - 1][M - 1] : -1);
     }
 
     static void bfs(int y, int x) {
