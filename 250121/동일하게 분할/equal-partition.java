@@ -22,18 +22,19 @@ public class Main {
         }
 
         boolean[][] dp = new boolean[N + 1][total + 1];
-
+        dp[0][0] = true;
         for(int i = 1; i <= N; i++) {
             dp[i][0] = true;
             for(int s = 1; s <= total; s++) {
                 if(s >= numbers[i]) {
                     dp[i][s] = dp[i - 1][s - numbers[i]];
-                } else {
+                } 
+                if(dp[i - 1][s]) {
                     dp[i][s] = dp[i - 1][s];
                 }
             }
         }
 
-        System.out.println(dp[N][total/2 + 1] ? "Yes" : "No");
+        System.out.println(dp[N][total/2] ? "Yes" : "No");
     }
 }
