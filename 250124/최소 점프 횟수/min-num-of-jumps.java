@@ -22,7 +22,6 @@ public class Main {
         for(int i = 1; i <= N; i++) {
             for(int j = N; j > i; j--) {
                 if(j - i <= jumps[i]) {
-                    if(dp[i] == 101) continue;
                     dp[j] = Math.min(dp[j], dp[i] + 1);
                 }
             }
