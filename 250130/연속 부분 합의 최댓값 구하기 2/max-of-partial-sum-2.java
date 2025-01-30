@@ -15,12 +15,14 @@ public class Main {
         }
 
         int sum = 0;
+        int rst = -1001;
         for(int i = 0; i < N; i++) {
             if(sum < 0) {
                 sum = 0;
             }
             sum += numbers[i];
+            rst = Math.max(rst, sum);
         }
-        System.out.println(sum);
+        System.out.println(rst);
     }
 }
