@@ -4,6 +4,7 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
         int N = Integer.parseInt(br.readLine());
 
@@ -16,13 +17,12 @@ public class Main {
             String number1 = String.valueOf(o1) + String.valueOf(o2);
             String number2 = String.valueOf(o2) + String.valueOf(o1);
 
-            return -number1.compareTo(number2);
+            return number2.compareTo(number1);
         });
 
-        String number = String.valueOf(list.get(0));
-        for(int i = 1; i < list.size(); i++) {
-            number += list.get(i);
+        for(int num : list) {
+            sb.append(num);
         }
-        System.out.println(number);
+        System.out.println(sb);
     }
 }
