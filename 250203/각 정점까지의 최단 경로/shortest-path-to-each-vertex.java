@@ -8,7 +8,6 @@ public class Main {
     static int N, M, K;
     static ArrayList<Node>[] graph;
     static int[] distance;
-    static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,7 +18,6 @@ public class Main {
         M = Integer.parseInt(st.nextToken());
 
         graph = new ArrayList[N + 1];
-        visited = new boolean[N + 1];
         for(int i = 1; i <= N; i++) {
             graph[i] = new ArrayList<>();
         }
@@ -40,7 +38,6 @@ public class Main {
         Arrays.fill(distance, INF);
         distance[K] = 0;
 
-        visited[K] = true;
         dijkstra(K);
 
         for(int i = 1; i <= N; i++) {
@@ -69,12 +66,9 @@ public class Main {
             if(minDist != distance[minIdx]) continue;
 
             for(Node node : graph[minIdx]) {
-                // if(visited[node.index]) continue;
-
                 int newDist = distance[minIdx] + node.cost;
                 if(distance[node.index] > newDist) {
                     distance[node.index] = newDist;
-                    // visited[node.index] = true;
                     pq.offer(new Element(node.index, newDist));
                 }
             }
