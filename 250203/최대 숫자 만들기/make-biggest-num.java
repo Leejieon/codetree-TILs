@@ -13,16 +13,10 @@ public class Main {
         }
 
         Collections.sort(list, (o1, o2) -> {
-            int number1 = Integer.parseInt(String.valueOf(o1) + String.valueOf(o2));
-            int number2 = Integer.parseInt(String.valueOf(o2) + String.valueOf(o1));
+            String number1 = String.valueOf(o1) + String.valueOf(o2);
+            String number2 = String.valueOf(o2) + String.valueOf(o1);
 
-            if(number1 > number2) {
-                return -1;
-            } else if(number1 < number2) {
-                return 1;
-            } else {
-                return 0;
-            }
+            return -number1.compareTo(number2);
         });
 
         String number = String.valueOf(list.get(0));
