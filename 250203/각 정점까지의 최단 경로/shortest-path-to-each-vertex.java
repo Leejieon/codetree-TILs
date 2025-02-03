@@ -69,12 +69,12 @@ public class Main {
             if(minDist != distance[minIdx]) continue;
 
             for(Node node : graph[minIdx]) {
-                if(visited[node.index]) continue;
+                // if(visited[node.index]) continue;
 
                 int newDist = distance[minIdx] + node.cost;
                 if(distance[node.index] > newDist) {
                     distance[node.index] = newDist;
-                    visited[node.index] = true;
+                    // visited[node.index] = true;
                     pq.offer(new Element(node.index, newDist));
                 }
             }
