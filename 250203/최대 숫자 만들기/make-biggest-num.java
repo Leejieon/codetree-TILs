@@ -13,31 +13,16 @@ public class Main {
         }
 
         Collections.sort(list, (o1, o2) -> {
-            int div1 = (int)Math.pow(10, String.valueOf(o1).length() - 1);
-            int div2 = (int)Math.pow(10, String.valueOf(o2).length() - 1);
+            int number1 = Integer.parseInt(String.valueOf(o1) + String.valueOf(o2));
+            int number2 = Integer.parseInt(String.valueOf(o2) + String.valueOf(o1));
 
-            int num1 = 0, num2 = 0;
-            while(true) {
-                if(div1 == 0 && div2 == 0) break;
-                
-                if(div1 > 0) {
-                    num1 = o1 / div1;
-                    o1 %= div1;
-                    div1 /= 10;
-                }
-                if(div2 > 0) {
-                    num2 = o2 / div2;
-                    o2 %= div2;
-                    div2 /= 10;
-                }
-
-                if(num1 > num2) {
-                    return -1;
-                } else if(num1 < num2) {
-                    return 1;
-                }
+            if(number1 > number2) {
+                return -1;
+            } else if(number1 < number2) {
+                return 1;
+            } else {
+                return 0;
             }
-            return 0;
         });
 
         String number = String.valueOf(list.get(0));
