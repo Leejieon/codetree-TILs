@@ -29,6 +29,7 @@ public class Main {
             int cost = Integer.parseInt(st.nextToken());
 
             graph[from].add(new Node(to, cost));
+            graph[to].add(new Node(from, cost));
         }
 
         st = new StringTokenizer(br.readLine());
