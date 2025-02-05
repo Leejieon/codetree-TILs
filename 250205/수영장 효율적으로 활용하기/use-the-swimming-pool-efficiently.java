@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Main {
 
-    static int N, M, total, min;
+    static int N, M, total, max;
     static int[] times;
 
     public static void main(String[] args) throws IOException {
@@ -13,22 +13,22 @@ public class Main {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        min = Integer.MAX_VALUE;
+        max = -1;
         times = new int[N];
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < N; i++) {
             times[i] = Integer.parseInt(st.nextToken());
             total += times[i];
-            min = Math.min(min, times[i]);
+            max = Math.max(max, times[i]);
         }
 
         System.out.println(parametricSearch());
     }
 
     static int parametricSearch() {
-        int left = min;
+        int left = max;
         int right = total;
-        int ans = Integer.MAX_VALUE;
+        int ans = 100_000 * 1_440;
 
         while(left <= right) {
             int mid = (left + right) / 2;
