@@ -4,7 +4,7 @@ import java.io.*;
 public class Main {
 
     static int N;
-    static int[] parents, count;
+    static int[] parents, size;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -14,12 +14,11 @@ public class Main {
         N = Integer.parseInt(br.readLine());
 
         parents = new int[100_001];
+        size = new int[100_001];
         for(int i = 1; i <= 100_000; i++) {
             parents[i] = i;
+            size[i] = 1;
         }
-
-        count = new int[100_001];
-        Arrays.fill(count, 1);
 
         for(int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -28,8 +27,7 @@ public class Main {
 
             union(a, b);
 
-            int root = find(a);
-            sb.append(count[root]).append("\n");
+            sb.append(size[find(a)]).append("\n");
         }
         System.out.print(sb);
     }
@@ -38,7 +36,7 @@ public class Main {
         x = find(x);
         y = find(y);
         parents[y] = x;
-        count[x] += count[y];
+        size[x] += size[y];
     }
 
     static int find(int x) {
