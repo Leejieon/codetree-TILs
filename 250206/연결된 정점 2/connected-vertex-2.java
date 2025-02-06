@@ -24,8 +24,9 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-
-            union(a, b);
+            
+            if(find(a) != find(b))
+                union(a, b);
 
             sb.append(size[find(a)]).append("\n");
         }
