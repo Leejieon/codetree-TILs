@@ -26,6 +26,7 @@ public class Main {
             int b = Integer.parseInt(st.nextToken());
 
             if(command == 0) {
+                if(parents[a] == parents[b]) continue;
                 union(a, b);
             } else {
                 if(parents[a] == parents[b]) {
