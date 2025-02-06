@@ -26,10 +26,9 @@ public class Main {
             int b = Integer.parseInt(st.nextToken());
 
             if(command == 0) {
-                if(parents[a] == parents[b]) continue;
                 union(a, b);
             } else {
-                if(parents[a] == parents[b]) {
+                if(find(a) == find(b)) {
                     sb.append("1");
                 } else {
                     sb.append("0");
@@ -43,7 +42,7 @@ public class Main {
     static void union(int x, int y) {
         x = find(x);
         y = find(y);
-        parents[y] = x;
+        parents[x] = y;
     }
 
     static int find(int x) {
