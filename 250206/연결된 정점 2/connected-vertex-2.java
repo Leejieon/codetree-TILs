@@ -28,7 +28,7 @@ public class Main {
 
             union(a, b);
 
-            int root = find(b);
+            int root = find(a);
             sb.append(count[root]).append("\n");
         }
         System.out.print(sb);
