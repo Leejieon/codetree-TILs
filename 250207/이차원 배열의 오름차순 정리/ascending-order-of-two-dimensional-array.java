@@ -14,7 +14,7 @@ public class Main {
         long left = 1;
         long right = N * N;
 
-        long ans = N * N + 1;
+        long ans = N * N;
         while(left <= right) {
             long mid = (left + right) / 2;
 
