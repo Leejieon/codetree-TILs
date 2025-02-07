@@ -3,13 +3,13 @@ import java.io.*;
 
 public class Main {
     
-    static int N, K;
+    static long N, K;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        N = Integer.parseInt(br.readLine());
-        K = Integer.parseInt(br.readLine());
+        N = Long.parseLong(br.readLine());
+        K = Long.parseLong(br.readLine());
 
         long left = 1;
         long right = N * N;
