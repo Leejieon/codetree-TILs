@@ -41,7 +41,7 @@ public class Main {
         for(int i = 1; i < N; i++) {
             int next = points[i];
 
-            if(Math.abs(cur - next) >= distance) {
+            if(next - cur >= distance) {
                 count++;
                 cur = next;
             }
