@@ -17,6 +17,7 @@ public class Main {
         for(int i = 0; i < N; i++) {
             points[i] = Integer.parseInt(br.readLine());
         }
+        Arrays.sort(points, 0, N);
 
         int left = 1;
         int right = 1_000_000_000;
@@ -37,13 +38,11 @@ public class Main {
 
     static boolean isPossible(int distance) {
         int count = 1;
-        int cur = points[0];
+        int lastIdx = 0;
         for(int i = 1; i < N; i++) {
-            int next = points[i];
-
-            if(next - cur >= distance) {
+            if(points[i] - points[lastIdx] >= distance) {
                 count++;
-                cur = next;
+                lastIdx = i;
             }
         }
         return count >= M;
