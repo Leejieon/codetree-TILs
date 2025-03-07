@@ -9,10 +9,10 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
 
         PriorityQueue<Bomb> pq = new PriorityQueue<>((o1, o2) -> {
-            if(o1.time == o2.time) {
-                return o2.score - o1.score;
+            if(o1.score == o2.score) {
+                return o1.time - o2.time;
             }
-            return o1.time - o2.time;
+            return o2.score - o1.score;
         });
 
         for(int i = 0; i < N; i++) {
@@ -28,10 +28,9 @@ public class Main {
         while(!pq.isEmpty()) {
             Bomb bomb = pq.poll();
 
-            if(curTime >= bomb.time) continue;
-
+            if(curTime > bomb.time) continue;
             ans += bomb.score;
-            curTime = bomb.time;
+            curTime++;
         }
 
         System.out.println(ans);
