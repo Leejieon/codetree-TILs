@@ -4,14 +4,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[] bCards = new int[50000];
+        int[] bCards = new int[n];
         HashSet<Integer> bSet = new HashSet<>();
         for (int i = 0; i < n; i++) {
             bCards[i] = sc.nextInt();
-            bSet.add(i);
+            bSet.add(bCards[i]);
         }
         
-        int[] aCards = new int[50000];
+        int[] aCards = new int[n];
         int aCardIdx = 0;
         for(int i = 1; i <= 2*n; i++) {
             if(!bSet.contains(i)) {
@@ -19,8 +19,8 @@ public class Main {
             }
         }
 
-        Arrays.sort(aCards, 0, n);
-        Arrays.sort(bCards, 0, n);
+        Arrays.sort(aCards);
+        Arrays.sort(bCards);
 
         int ans = 0;
         int bIdx = 0;
