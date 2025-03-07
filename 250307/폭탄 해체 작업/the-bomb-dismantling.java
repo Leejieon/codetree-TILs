@@ -8,29 +8,32 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        PriorityQueue<Bomb> pq = new PriorityQueue<>((o1, o2) -> {
-            if(o1.score == o2.score) {
-                return o1.time - o2.time;
-            }
-            return o2.score - o1.score;
-        });
-
+        Bomb[] bombs = new Bomb[N];
         for(int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int score = Integer.parseInt(st.nextToken());
             int time = Integer.parseInt(st.nextToken());
 
-            pq.offer(new Bomb(score, time));
+            bombs[i] = new Bomb(score, time);
         }
+        Arrays.sort(bombs, (o1, o2) -> {
+            if(o1.time == o2.time) {
+                return o2.score - o1.score;
+            }
+            return o1.time - o2.time;
+        });
 
-        int curTime = 0;
+        PriorityQueue<Integer> pq = new PriorityQueue<>((o1, o2) -> o2 - o1);
+        int bombIdx = N - 1;
         int ans = 0;
-        while(!pq.isEmpty()) {
-            Bomb bomb = pq.poll();
-
-            if(curTime > bomb.time) continue;
-            ans += bomb.score;
-            curTime++;
+        for(int t = 10_000; t >= 1; t--) {
+            while(bombIdx >= 0 && bombs[bombIdx].time >= t) {
+                pq.add(bombs[bombIdx].score);
+                bombIdx--;
+            }
+            if(!pq.isEmpty()) {
+                ans += pq.poll();
+            }
         }
 
         System.out.println(ans);
