@@ -30,13 +30,14 @@ public class Main {
             int sum = minNum + maxNum;
             ans = Math.max(ans, sum);
 
-            map.put(minNum, map.get(minNum) - 1);
-            map.put(maxNum, map.get(maxNum) - 1);
-
-            if(map.get(minNum) == 0) {
+            if(map.get(minNum) > map.get(maxNum)) {
+                map.put(minNum, map.get(minNum) - map.get(maxNum));
+                maxIdx--;
+            } else if(map.get(minNum) < map.get(maxNum)) {
+                map.put(maxNum, map.get(maxNum) - map.get(minNum));
                 minIdx++;
-            }
-            if(map.get(maxNum) == 0) {
+            } else {
+                minIdx++;
                 maxIdx--;
             }
         }
