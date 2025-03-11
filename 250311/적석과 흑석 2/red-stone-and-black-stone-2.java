@@ -9,11 +9,10 @@ public class Main {
         int C = Integer.parseInt(st.nextToken());
         int N = Integer.parseInt(st.nextToken());
 
-        int[] reds = new int[C];
+        TreeSet<Integer> reds = new TreeSet<>();
         for(int i = 0; i < C; i++) {
-            reds[i] = Integer.parseInt(br.readLine());
+            reds.add(Integer.parseInt(br.readLine()));
         }
-        Arrays.sort(reds);
         
         ArrayList<Black> blacks = new ArrayList<>();
         for(int i = 0; i < N; i++) {
@@ -28,27 +27,17 @@ public class Main {
             return o1.b - o2.b;
         });
 
-        int redIdx = C - 1;
-        int blackIdx = N - 1;
         int ans = 0;
-        while(redIdx >= 0 && blackIdx >= 0) {
-            int t = reds[redIdx];
-            int a = blacks.get(blackIdx).a;
-            int b = blacks.get(blackIdx).b;
+        for(int i = 0; i < N; i++) {
+            int a = blacks.get(i).a;
+            int b = blacks.get(i).b;
 
-            if(a <= t && t <= b) {
-                ans++;
-                redIdx--;
-                blackIdx--;
-                continue;
-            }
-            if(a > t) {
-                blackIdx--;
-                continue;
-            }
-            if(t > b) {
-                redIdx--;
-                continue;
+            if(reds.ceiling(a) != null) {
+                int ti = reds.ceiling(a);
+                if(ti <= b) {
+                    ans++;
+                    reds.remove(ti);
+                }
             }
         }
         System.out.println(ans);
