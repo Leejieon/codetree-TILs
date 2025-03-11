@@ -24,8 +24,8 @@ public class Main {
            blacks.add(new Black(a, b));
         }
         Collections.sort(blacks, (o1, o2) -> {
-            if(o1.a == o2.a) return o1.b - o2.b;
-            return o1.a - o2.a;
+            if(o1.b == o2.b) return o1.a - o2.a;
+            return o1.b - o2.b;
         });
 
         int redIdx = C - 1;
