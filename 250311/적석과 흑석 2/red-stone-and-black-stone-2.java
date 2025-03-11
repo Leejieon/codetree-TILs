@@ -28,26 +28,26 @@ public class Main {
             return o1.a - o2.a;
         });
 
-        int redIdx = 0;
-        int blackIdx = 0;
+        int redIdx = C - 1;
+        int blackIdx = N - 1;
         int ans = 0;
-        while(redIdx < C && blackIdx < N) {
+        while(redIdx >= 0 && blackIdx >= 0) {
             int t = reds[redIdx];
             int a = blacks.get(blackIdx).a;
             int b = blacks.get(blackIdx).b;
 
             if(a <= t && t <= b) {
                 ans++;
-                redIdx++;
-                blackIdx++;
+                redIdx--;
+                blackIdx--;
                 continue;
             }
             if(a > t) {
-                redIdx++;
+                blackIdx--;
                 continue;
             }
             if(t > b) {
-                blackIdx++;
+                redIdx--;
                 continue;
             }
         }
