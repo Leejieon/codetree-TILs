@@ -2,24 +2,25 @@ import java.util.*;
 
 public class Main {
 
-    static int N, M;
-    static long[] pipes;
+    static long N;
+    static int M;
+    static int[] pipes;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        N = sc.nextInt();
+        N = sc.nextLong();
         M = sc.nextInt();
 
-        pipes = new long[M];
+        pipes = new int[M];
         long max = 0;
         for (int i = 0; i < M; i++) {
-            pipes[i] = sc.nextLong();
+            pipes[i] = sc.nextInt();
             max = Math.max(max, pipes[i]);
         }
             
         long left = 1L;
-        long right = 10_000_000_000L;
+        long right = N * (long)1e9;
         long ans = Long.MAX_VALUE;
 
         while(left <= right) {
@@ -37,7 +38,7 @@ public class Main {
 
     static boolean isPossible(long time) {
         long count = 0;
-        for(long pipe : pipes) {
+        for(int pipe : pipes) {
             count += time / pipe;
         }
 
