@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
 
     static int N, M;
-    static int[] pipes;
+    static long[] pipes;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -11,19 +11,19 @@ public class Main {
         N = sc.nextInt();
         M = sc.nextInt();
 
-        pipes = new int[M];
-        int max = 0;
+        pipes = new long[M];
+        long max = 0;
         for (int i = 0; i < M; i++) {
-            pipes[i] = sc.nextInt();
+            pipes[i] = sc.nextLong();
             max = Math.max(max, pipes[i]);
         }
             
-        int left = 1;
-        int right = N * max;
-        int ans = Integer.MAX_VALUE;
+        long left = 1L;
+        long right = 10_000_000_000L;
+        long ans = Long.MAX_VALUE;
 
         while(left <= right) {
-            int mid = (left + right) / 2;
+            long mid = (left + right) / 2;
 
             if(isPossible(mid)) {
                 right = mid - 1;
@@ -35,9 +35,9 @@ public class Main {
         System.out.println(ans);
     }
 
-    static boolean isPossible(int time) {
-        int count = 0;
-        for(int pipe : pipes) {
+    static boolean isPossible(long time) {
+        long count = 0;
+        for(long pipe : pipes) {
             count += time / pipe;
         }
 
