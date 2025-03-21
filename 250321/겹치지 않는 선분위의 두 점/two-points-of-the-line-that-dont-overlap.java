@@ -3,23 +3,23 @@ import java.util.*;
 public class Main {
 
     static int n, m;
-    static ArrayList<Long> list = new ArrayList<>();
+    static ArrayList<Pair> segments = new ArrayList<>();
     
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         m = sc.nextInt();
-        long[] start = new long[m];
-        long[] end = new long[m];
         for (int i = 0; i < m; i++) {
-            start[i] = sc.nextLong();
-            end[i] = sc.nextLong();
-
-            for(long j = start[i]; j <= end[i]; j++) {
-                list.add(j);
-            }
+            long a = sc.nextLong();
+            long b = sc.nextLong();
+            segments.add(new Pair(a, b));
         }
-        Collections.sort(list);
+        Collections.sort(segments, (o1, o2) -> {
+            if (o1.a != o2.a) {
+                return Long.compare(o1.a, o2.a);
+            }
+            return Long.compare(o1.b, o2.b);
+        });
         
         long left = 0;
         long right = (long)1e18;
@@ -38,14 +38,28 @@ public class Main {
     }
 
     static boolean isPossible(long dist) {
-        int count = 1;
-        int prev = 0;
-        for(int i = 1; i < list.size(); i++) {
-            if(list.get(i) - list.get(prev) < dist) continue;
+        int count = 0;
+        long lastX = -(long)1e18;
 
-            count++;
-            prev = i;
+        for(int i = 0; i < segments.size(); i++) {
+            long a = segments.get(i).a;
+            long b = segments.get(i).b;
+
+            while(lastX + dist <= b) {
+                count++;
+                lastX = Math.max(a, lastX + dist);
+                if(count >= n) break;
+            }
         }
         return count >= n;
     }
+
+    static class Pair {
+        long a, b;
+
+        Pair(long a, long b) {
+            this.a = a;
+            this.b = b;
+        }
+    } 
 }
