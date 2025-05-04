@@ -34,17 +34,20 @@ public class Main {
             list.add(new int[]{x, y});
         }
 
-        proceed(0, 0);
+        proceed(0, 0, 0);
         System.out.println(isPossible ? 1 : 0);
     }
 
-    static void proceed(int cur, int count) {
+    static void proceed(int cur, int depth, int count) {
         // Base Case
         if(isPossible) {
             return;
         }
-        if(count > 3) {
-            if(check()) {
+        if(depth >= 3) {
+            // if(check()) {
+            //     isPossible = true;
+            // }
+            if(count >= N) {
                 isPossible = true;
             }
             return;
@@ -54,23 +57,25 @@ public class Main {
         for(int i = cur; i < 22; i++) {
             if(i < 11) {
                 if(xmap.containsKey(i)) {
-                    for(int y : xmap.get(i)) {
-                        checked[i][y] = true;
-                    }
-                    proceed(i + 1, count + 1);
-                    for(int y : xmap.get(i)) {
-                        checked[i][y] = false;
-                    }
+                    // for(int y : xmap.get(i)) {
+                    //     checked[i][y] = true;
+                    // }
+                    // proceed(i + 1, count + 1);
+                    // for(int y : xmap.get(i)) {
+                    //     checked[i][y] = false;
+                    // }
+                    proceed(i + 1, depth + 1, count + xmap.get(i).size());
                 }
             } else {
                 if(ymap.containsKey(i - 11)) {
-                    for(int x : ymap.get(i - 11)) {
-                        checked[x][i - 11] = true;
-                    }
-                    proceed(i + 1, count + 1);
-                    for(int x : ymap.get(i - 11)) {
-                        checked[x][i - 11] = false;
-                    }
+                    // for(int x : ymap.get(i - 11)) {
+                    //     checked[x][i - 11] = true;
+                    // }
+                    // proceed(i + 1, count + 1);
+                    // for(int x : ymap.get(i - 11)) {
+                    //     checked[x][i - 11] = false;
+                    // }
+                    proceed(i + 1, depth + 1, count + ymap.get(i - 11).size());
                 }
             }
         }
