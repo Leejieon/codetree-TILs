@@ -40,21 +40,6 @@ public class Main {
             breakfast();
             lunch();
             dinner();
-            // for(int y = 0; y < N; y++) {
-            //     for(int x = 0; x < N; x++) {
-            //         System.out.print(fmap[y][x] + " ");
-            //     }
-            //     System.out.println();
-            // }
-            
-            // for(int y = 0; y < N; y++) {
-            //     for(int x = 0; x < N; x++) {
-            //         System.out.print(bmap[y][x] + " ");
-            //     }
-            //     System.out.println();
-            // }
-            // System.out.println();
-        
             printB();
         }
 
