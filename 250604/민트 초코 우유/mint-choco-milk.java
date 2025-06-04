@@ -40,6 +40,21 @@ public class Main {
             breakfast();
             lunch();
             dinner();
+            // for(int y = 0; y < N; y++) {
+            //     for(int x = 0; x < N; x++) {
+            //         System.out.print(fmap[y][x] + " ");
+            //     }
+            //     System.out.println();
+            // }
+            
+            // for(int y = 0; y < N; y++) {
+            //     for(int x = 0; x < N; x++) {
+            //         System.out.print(bmap[y][x] + " ");
+            //     }
+            //     System.out.println();
+            // }
+            // System.out.println();
+        
             printB();
         }
 
@@ -119,6 +134,7 @@ public class Main {
                 group.cnt++;
             }
         }
+    
         groupList.add(group);
     }
 
@@ -130,7 +146,7 @@ public class Main {
                     if(o1.boss[0] == o2.boss[0]) {
                         return o1.boss[1] - o2.boss[1];
                     }
-                    return o1.boss[0] - o2.boss[1];
+                    return o1.boss[0] - o2.boss[0];
                 }
                 return bmap[o2.boss[0]][o2.boss[1]] - bmap[o1.boss[0]][o1.boss[1]];
             }
@@ -163,23 +179,19 @@ public class Main {
                 // 완전히 같은 경우, 전파하지 않고 다음으로 진행
                 if(fmap[boss[0]][boss[1]].equals(fmap[ny][nx])) continue;
 
-                String prevG = fmap[ny][nx];
                 int y = bmap[ny][nx];
                 // 강한 전파
                 if(x > y) {
                     fmap[ny][nx] = fmap[boss[0]][boss[1]];
-                    x = x - (y + 1);
-                    bmap[ny][nx]++;                 
+                    x -= (y + 1);
+                    bmap[ny][nx]++;
+                    shield[ny][nx] = true;              
                 } 
                 // 약한 전파
                 else {
                     fmap[ny][nx] = union(fmap[boss[0]][boss[1]], fmap[ny][nx]);
                     bmap[ny][nx] += x;
                     x = 0;
-                }
-
-                // 다른 음식의 대표자에게 전파 당하면 전파를 하지 않는다. 
-                if(!fmap[boss[0]][boss[1]].equals(prevG)) {
                     shield[ny][nx] = true;
                 }
             }
